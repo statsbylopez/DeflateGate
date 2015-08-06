@@ -24,7 +24,7 @@ y1 <- 12.71 + 0.32 * sin(theta)
 points(x, y1, type = "l")
 
 
-
+#Three statistical models for consideration. The Wells Report uses model1 as the final model
 
 model0 <- delta ~ gauge + (1|ball)
 model1 <- delta ~ team + gauge + (1|ball)
@@ -32,9 +32,11 @@ model2 <- delta ~ team + gauge + team:gauge + (1|ball)
 
 
 
-#Residuals plot
+#Residuals plot using model1
 fit1 <- lmer(model1, data=y)
 fit1
+
+#The pvalue, as reported in the Wells Report, is 0.004
 pvalue<-2*pt(summary(fit1)$coeff[2,3],13)
 pvalue
 
